@@ -1,5 +1,5 @@
 export default function Home() {
   return(
-    <div className=""></div>
+    <div className="bg-amber-200"></div>
   )
 }
