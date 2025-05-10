@@ -16,6 +16,10 @@ export default function Cadastrar() {
     const [bamer, setBamer] = useState("");
     async function handleSumit(event) {
         event.preventDefault();
+        if(!
+            titulo|| !diretor || !ano || !genero || !nota || !sinopse || !bamer )
+            return toast.error("preencha os todos campos")
+            
         try {
             await instance.post("/api/movies", {
                 titulo: titulo,
@@ -24,7 +28,7 @@ export default function Cadastrar() {
                 nota:nota,
                 genero:genero,
                 sinopse:sinopse,
-                bamer:bamer
+                banner:bamer
             })
             toast.success("filme Cadastar com sucesso!")
             setTilulo("")
@@ -61,6 +65,7 @@ export default function Cadastrar() {
                             label="Diretor*"
                             placehoder="Digite o nome do diretor"
                             type="text"
+                            value ={diretor}
                             onChange={(event) => setDiretor(event.target.value)}
                         />
                         <div className="w-full flex gap-4">
@@ -69,6 +74,7 @@ export default function Cadastrar() {
                                     label="Ano"
                                     placehoder="Digite o ano de lançamento"
                                     type="number"
+                                    value={ano}
                                     onChange={(event) => setAno(event.target.value)}
                                 />
 
@@ -84,6 +90,7 @@ export default function Cadastrar() {
                                         "Ficção cientifica",
                                         "Romance"
                                     ]}
+                                    value ={genero}
                                     onChange={(event) => setGenero(event.target.value)}
                                 />
                             </div>
@@ -94,6 +101,7 @@ export default function Cadastrar() {
                                     label="Nota"
                                     placehoder="0"
                                     type="number"
+                                    value ={nota}
                                     onChange={(event) => setNota(event.target.value)}
                                 />
 
@@ -104,6 +112,7 @@ export default function Cadastrar() {
                             className="w-full flex flex-col gap-2">
                             <label className="text-[17px] font-bold">Sinopse</label>
                             <textarea
+                            value={sinopse}
                                 onChange={(event) => setSinopse(event.target.value)}
                                 className="w-full h-[150px] max-h-[150px] bg-[#141414] 
                             rounded-lg p-2  border border-[#ffffff1a] outline-none cursor-pointer 
@@ -111,6 +120,7 @@ export default function Cadastrar() {
                         </div>
                         <CustomInput
                             label="Bamer"
+                            value={bamer}
                             onChange={(event) => setBamer(event.target.value)}
                             placehoder="URL do imagem"
                             type="text"

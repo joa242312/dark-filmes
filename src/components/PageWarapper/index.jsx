@@ -1,6 +1,6 @@
 import Header from "../Header"
 
-export default function PageWarapper({ children , showButton }) {
+export default function PageWarapper({ children , showButton =true }) {
     return (
         <div className="w-full h-full flex flex-col">
             <Header showButton={showButton} />
