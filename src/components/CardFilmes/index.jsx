@@ -22,6 +22,7 @@ export default function CardFilmes({ filme }){
                     <p className="text-[15px] text-[#8a898c]">{filme.ano}</p>
                     <div className="px-2 py-0 bg-[#F587F0FF]/10 text-[#F587F0FF] rounded-lg">{filme.genero}</div>
                 </div>
+                
             </div>
         </div>
     )
