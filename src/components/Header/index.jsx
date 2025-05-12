@@ -9,7 +9,7 @@ export default function Header({showButton =true}) {
             {showButton &&(
             <button onClick={() => window.location.href ="/cadastrar"}
             className="w-[150px] h-[60%] rounded-md 
-            bg-[#F587F0FF] font-black hover:bg-[#F587F0FF]/70 cursor-pointer">Adicionar FiLme</button>
+            bg-[#F587F0FF] font-bold hover:bg-[#F587F0FF]/70 cursor-pointer">Adicionar FiLme</button>
             )}
         </header>
     )

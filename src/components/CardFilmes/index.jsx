@@ -1,6 +1,13 @@
+import { useRouter } from "next/router"
+
 export default function CardFilmes({ filme }){
+    const router = useRouter()
+    function handleClickNavigate(){
+        router.push(`/filme/${filme.id}`)
+        }
     return (
-        <div className="w-[350px] h-[280px] flex flex-col rounded-lg
+        <div onClick={handleClickNavigate}
+        className="w-[350px] h-[280px] flex flex-col rounded-lg
          bg-[#222222] cursor-pointer border border-transparent
           hover:border-[] 
             transition-all duration-300 ease-in-out">

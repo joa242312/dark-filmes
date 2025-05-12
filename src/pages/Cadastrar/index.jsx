@@ -1,7 +1,7 @@
 import instance from "@/api/instance";
 import CustomInput from "@/components/CustomInput";
 import CustomSelect from "@/components/CustomSelect";
-import PageWarapper from "@/components/PageWarapper";
+import PageWarapper from "@/components/PageWrapper";
 import { useState } from "react";
 import { toast } from "react-toastify";
 

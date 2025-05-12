@@ -1,20 +1,34 @@
-import CardFilmes from "@/components/CardFilmes";
-import PageWarapper from "@/components/PageWarapper";
+import instance from "@/api/instance";
+import CardFilme from "@/components/CardFilmes";
+import PageWrapper from "@/components/PageWrapper";
+import { useEffect, useState } from "react";
 
-export default function Home() {
-  return(
-  <PageWarapper>
-    <div className="w-full flex flex-col items-center justify-center pt-7 pb-4">
-    <h1 className="text-[30px] text-[#F587F0FF] font-bold">Sua Coleção de FiLme</h1>
-    <p className="text-[#8a8987] text-[20px]">Acompanhe seus filmes favoritos. 
-      Adicione novos filmes à sua coleção 
-      e organize seu banco de dados pessoal de filmes.</p>
-    </div>
-    <div className="w-full h-auto flex flex-wrap justify-center gap-2">
-      <CardFilmes></CardFilmes>
-      <CardFilmes></CardFilmes>
-    </div>
+export default function Home(){
+  const [filmes, setFilmes] = useState([]);
 
-  </PageWarapper>
+  useEffect(() => {
+    async function getFilmes(){
+      const response = await instance.get("/api/movies")
+      setFilmes(response.data)
+    }
+    getFilmes()
+  }, []);
+
+  return (
+    <PageWrapper>
+      <div className="w-full flex flex-col items-center justify-center pt-7">
+        <h1 className="text-[40px] text-[#F587F0FF] font-bold">Sua Coleção de Filmes</h1>
+        <p className="text-[#8a898c] text-[20px]">Acompanhe seus filmes favoritos. Adicione novos filmes à sua coleção</p>
+      </div>
+      <div className="w-full h-auto flex flex-wrap justify-center gap-2 pt-8">
+        {
+          filmes.map((filme) => {
+            return (
+              <CardFilme filme={filme} key={filme.id}/>
+            )
+          })
+        }
+      </div>
+    </PageWrapper>
   )
 }
